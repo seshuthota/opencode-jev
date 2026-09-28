@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Controlled rollout: route tool permissions through the Jev proxy instead
+  // of relying on OpenCode's broad default allow rule. The plugin still uses
+  // deterministic local hard-denies for destructive and sensitive operations.
+  "permissions": [
+    { "action": "*", "resource": "*", "effect": "ask" }
+  ]
+}

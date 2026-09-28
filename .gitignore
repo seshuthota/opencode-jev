@@ -1,0 +1,28 @@
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+*.tgz
+*.tar.gz
+
+# Temporary packed-consumer verification directories (Slice 7 consumer checks
+# use /tmp/opencode outside the repo; these patterns cover in-repo accidents).
+.packed-consumer/
+.tmp-consumer/
+tmp-consumer/
+consumer-check/
+
+.env
+.env.*
+!.env.example
+
+# Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS artifacts
+.DS_Store
+Thumbs.db

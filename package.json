@@ -1,0 +1,42 @@
+{
+  "name": "opencode-jev-permissions",
+  "version": "0.1.0",
+  "description": "OpenCode V2 server permission proxy evaluated by TypeSafe Jev (once/reject/manual).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "rm -rf dist && tsc src/index.ts --target ES2022 --module NodeNext --moduleResolution NodeNext --lib ES2022,DOM --types node --strict --noUncheckedIndexedAccess --exactOptionalPropertyTypes --noImplicitOverride --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --forceConsistentCasingInFileNames --isolatedModules --verbatimModuleSyntax --skipLibCheck --outDir dist --declaration --declarationMap --sourceMap",
+    "verify": "node -e 'const [a,b,c]=process.versions.node.split(\".\").map(Number); if (a<22 || (a===22 && (b<19 || (b===19 && c<0)))) process.exit(1)' && npm run typecheck && npm test && npm run build",
+    "prepack": "npm run verify"
+  },
+  "dependencies": {
+    "@opencode/plugin": "2.0.16",
+    "@typesafe-ai/sdk": "0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "typescript": "5.9.3",
+    "vitest": "^4.1.11"
+  }
+}
